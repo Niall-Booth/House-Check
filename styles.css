@@ -1,0 +1,128 @@
+body{
+    margin: 0;
+    padding: 10px;
+    text-align: center;
+    background-color: #222831;
+}
+
+h1{
+    margin: 0;
+    color: white;
+}
+
+nav{
+    padding: 10px;
+    border: 2px solid #4A70A9;
+    box-shadow: 0px 4px 10px #4A70A9;
+    border-radius: 30px;
+}
+
+main{
+    height: 83dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+form{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    filter: blur(0px);
+}
+
+span{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #4A70A9;
+}
+
+button{
+    width: 45%;
+    height: 7%;
+    border-radius: 30px;
+    background-color: #222831;
+    color: white;
+}
+
+footer{
+    padding: 10px;
+    border: 2px solid #4A70A9;
+    box-shadow: 0px 4px 10px #4A70A9;
+    border-radius: 30px;
+}
+
+#footer-h2{
+    margin: 0;
+    color: white;
+}
+
+#submit-button{
+    border-color: #9AD872;
+}
+
+#submit-button:active{
+    background-color: #9AD872;
+    color: black;
+    box-shadow: 0px 4px 10px #9AD872;
+}
+
+#check-button{
+    border-color: #6366f1;
+}
+
+#check-button:active{
+    background-color: #6366f1;
+    box-shadow: 0px 4px 10px #6366f1;
+}
+
+#alert{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    z-index: 9;
+    position: absolute;
+    background-color: white;
+    width: 70%;
+    height: 50%;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 30px;
+    border: 5px solid #6366f1;
+}
+
+#alert p{
+    font-size: 25px;
+}
+
+#close{
+    background-color: white;
+    border-color: #D62828;
+    color: black;
+}
+
+#close:active{
+    background-color: #D62828;
+    box-shadow: 0px 4px 10px #D62828;
+}
+
+.switch{
+    display: flex;
+    background-color: white;
+    width: 40%;
+    height: 7%;
+    border-radius: 30px;
+    padding: 5px;
+    border: 2px solid #222831;
+}
+
+.heading{
+    color: white;
+    font-size: 25px;
+}

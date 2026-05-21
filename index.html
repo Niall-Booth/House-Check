@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Check List</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <h1>House Checker v1.0</h1>
+    </nav>
+    <main>
+        <form>
+            <label class="heading">Bedroom</label>
+            <label class="switch" id="bedroom-switch">
+                <span></span>
+            </label>
+            <label class="heading">Bathroom</label>
+            <label class="switch" id="bathroom-switch">
+                <span></span>
+            </label>
+            <label class="heading">Kitchen</label>
+            <label class="switch" id="kitchen-switch">
+                <span></span>
+            </label>
+            <label class="heading">Door Locked</label>
+            <label class="switch" id="door-locked-switch">
+                <span></span>
+            </label>
+            <button id="submit-button" type="button">Submit</button>
+            <button id="check-button" type="button">Check</button>
+        </form>
+        <div id="alert">
+            <h1></h1>
+            <p></p>
+            <button id="close" type="button">Close</button>
+        </div>
+    </main>
+    <footer>
+        <h2 id="footer-h2"></h2>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        var date = new Date().getFullYear();
+        $("#footer-h2").text(date)
+    </script>
+    <script type="module" src="main.js"></script>
+</body>
+</html>
