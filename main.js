@@ -2,6 +2,8 @@ import { animate} from 'https://esm.sh/animejs';
 
 $(document).ready(function () {
 
+    window.scrollTo(0, 1);
+
     function alertDisplay(heading, colour, message){
         $("form").css("filter", "blur(5px)");
         $("#alert h1").css("color", colour);
