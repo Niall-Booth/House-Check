@@ -1,8 +1,15 @@
 import { animate} from 'https://esm.sh/animejs';
 
-$(document).ready(function () {
+const STORAGE_VERSION = "2";
 
-    window.scrollTo(0, 5);
+const savedVersion = localStorage.getItem("version") || "1";
+
+if (savedVersion !== STORAGE_VERSION) {
+    localStorage.removeItem("data")
+    localStorage.setItem("version", STORAGE_VERSION);
+}
+
+$(document).ready(function () {
 
     function alertDisplay(heading, colour, message){
         $("form").css("filter", "blur(5px)");
@@ -12,21 +19,15 @@ $(document).ready(function () {
         $("#alert").css("display", "flex");
     }
 
-    async function checkComplete(){
-        let data = JSON.parse(localStorage.getItem("data")) || [];
+    function checkComplete(){
+        let data = JSON.parse(localStorage.getItem("data")) || {};
         var currentDate = new Date().toDateString();
-        var complete = false;
-        for (const entry of data){
-            if(entry.date === currentDate){
-                complete = true
-                break;
-            }
-        }
-        return complete;
+        return currentDate === data.date;
     }
 
     $(".switch").on("click", function(){
         $(this).toggleClass("checked");
+        $(this).css("border-color", "#222831");
         if($(this).hasClass("checked")){
             animate($(this).find("span")[0], { x: '6rem' });
         }
@@ -35,8 +36,8 @@ $(document).ready(function () {
         }
     })
 
-    $("#submit-button").on("click", async function(){
-        if(await checkComplete()){
+    $("#submit-button").on("click", function(){
+        if(checkComplete()){
             alertDisplay("Complete", "#9AD872", "House has been checked today");
             return;
         }
@@ -51,19 +52,19 @@ $(document).ready(function () {
             }
         })
 
-        if(numChecked != 4){
+        if(numChecked !== 4){
             alertDisplay("Failed", "#D62828", "Not everythings has been checked, see red switches for what is left to check");
         }
         else{
             alertDisplay("Success", "#9AD872", "House successfully checked");
-            let data = JSON.parse(localStorage.getItem("data")) || [];
-            data.push({"date" : new Date().toDateString()})
+            let data = JSON.parse(localStorage.getItem("data")) || {};
+            data.date = new Date().toDateString();
             localStorage.setItem("data", JSON.stringify(data));
         }
     })
 
-    $("#check-button").on("click", async function(){
-        if(await checkComplete()){
+    $("#check-button").on("click", function(){
+        if(checkComplete()){
             alertDisplay("Complete", "#9AD872", "House has been checked today")
         }
         else{
