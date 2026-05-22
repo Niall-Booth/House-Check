@@ -1,6 +1,6 @@
 import { animate} from 'https://esm.sh/animejs';
 
-const STORAGE_VERSION = "2";
+const STORAGE_VERSION = "3";
 
 const savedVersion = localStorage.getItem("version") || "1";
 
