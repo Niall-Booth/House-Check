@@ -19,10 +19,13 @@ $(document).ready(function () {
         $("#alert").css("display", "flex");
     }
 
-    function checkComplete(){
+    function checkRecentlyComplete(){
         let data = JSON.parse(localStorage.getItem("data")) || {};
-        var currentDate = new Date().toDateString();
-        return currentDate === data.date;
+        if(!data.date){return false}
+
+        var currentDate = new Date();
+        var previousDate = new Date(data.date);
+        return currentDate - previousDate < 3600000;
     }
 
     $(".switch").on("click", function(){
@@ -37,8 +40,8 @@ $(document).ready(function () {
     })
 
     $("#submit-button").on("click", function(){
-        if(checkComplete()){
-            alertDisplay("Complete", "#9AD872", "House has been checked today");
+        if(checkRecentlyComplete()){
+            alertDisplay("Complete", "#9AD872", "House has been checked recently today");
             return;
         }
 
@@ -58,13 +61,13 @@ $(document).ready(function () {
         else{
             alertDisplay("Success", "#9AD872", "House successfully checked");
             let data = JSON.parse(localStorage.getItem("data")) || {};
-            data.date = new Date().toDateString();
+            data.date = new Date();
             localStorage.setItem("data", JSON.stringify(data));
         }
     })
 
     $("#check-button").on("click", function(){
-        if(checkComplete()){
+        if(checkRecentlyComplete()){
             alertDisplay("Complete", "#9AD872", "House has been checked today")
         }
         else{
